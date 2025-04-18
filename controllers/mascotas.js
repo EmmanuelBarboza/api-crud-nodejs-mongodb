@@ -27,7 +27,8 @@ class mascotasController{
 
     async getAll(req, res) {
         try {
-            res.status(201).json({status: "getAll-ok"});
+            const data = await mascotasModel.getAll();
+            res.status(201).json({data, status: "getAll-ok"});
         } catch (error) {
             res.status(500).json({status: error.message});
         }
@@ -35,7 +36,8 @@ class mascotasController{
 
     async getOne(req, res) {
         try {
-            res.status(201).json({status: "getOne-ok"});
+            const data = await mascotasModel.getOne(req.params.id);
+            res.status(201).json({data, status: "getOne-ok"});
         } catch (error) {
             res.status(500).json({status: error.message});
         }
